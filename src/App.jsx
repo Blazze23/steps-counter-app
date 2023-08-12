@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import Counter from "./Counter";
 
@@ -44,18 +45,12 @@ function App() {
         </p>
 
         <div className="buttons">
-          <button
-            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-            onClick={handlePrevious}
-          >
-            Previous
-          </button>
-          <button
-            style={{ backgroundColor: "#7950f2", color: "#fff" }}
-            onClick={handleNext}
-          >
-            Next
-          </button>
+          <Button onClick={handlePrevious} bgColor="#7950f2" textColor="#fff">
+            <span>👈</span>Previous
+          </Button>
+          <Button onClick={handleNext} bgColor="#7950f2" textColor="#fff">
+            Next <span>👉</span>
+          </Button>
         </div>
       </div>
     );
@@ -77,3 +72,14 @@ function App() {
 }
 
 export default App;
+
+function Button({ textColor, bgColor, onClick, children }) {
+  return (
+    <button
+      style={{ backgroundColor: bgColor, color: textColor }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
+  );
+}
